@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="message" class="x">Para 1 (#message)</p>
+
+    <p class="x">Para 2 (class x)</p>
+
+    <section>
+        <p class="x">Para within a section (class x)</p>
+    </section>
+
+    <p>Para 3</p>
+
+    <script>
+        console.log( document ); // root of DOM tree
+
+        const para1 = document.getElementById( 'message' );
+        console.log( para1 );
+        console.dir( para1 );
+
+        console.log( para1.innerHTML );
+
+        // xEls in NOT a DOM node. It is a list. It has DOM nodes as items in the list.
+        console.log(document.getElementsByClassName( 'x' ));
+        const xEls = document.getElementsByClassName( 'x' );
+        console.log( xEls );
+        console.log( xEls[0] ); // 1st p.x
+        console.log( xEls[1] ); // 2nd p.x
+
+        // It returns a list. You can supply ANY CSS selector to it.
+        const xEls1 = document.querySelectorAll( '.x' );
+        console.log( xEls1 );
+
+        // It returns a DOM node
+        const firstXEl = document.querySelector( '.x' );
+        console.log( firstXEl );
+
+        const firstXElWithinSection = document.querySelector( 'section .x');
+        console.log( firstXElWithinSection );
+
+        // let's get the section
+        const section = document.querySelector( 'section' );
+        // restict search within the section
+        console.log(section.querySelector( '.x' ) );
+
+
+    </script>
+</body>
+</html>
