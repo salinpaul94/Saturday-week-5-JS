@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Click me</button>
+    <a href="https://www.google.com" id="google-link">Google search page</a>
+    <input type="range" min="1" max="10" id="rating"/>
+    <span id="rating-value"></span>
+
+    <script>
+        /**
+         * Set 'click' handler on button. Check "this", event object
+         * Prevent default action on 'click' of Google search page link if user does not
+         * want to navigate.
+         * The 'input' event of inputs using range input. The value property.
+         */
+        const button = document.querySelector( 'button' );
+        button.addEventListener( 'click', function () {
+            console.log( "button clicked" );
+            console.log( event );
+        });
+
+        document.querySelector( "#google-link" ).addEventListener( 'click', function (event) {
+            const choice = confirm( 'Are you sure you want to google search page? ')
+        
+            if( choice === false) {
+                event.preventDefault();
+            }
+        });
+
+        const ratingEl = document.getElementById( 'rating' );
+        console.log(ratingEl.value); // current value
+        ratingEl.value = '3'; // new value
+        console.log(ratingEl.value);
+
+        function setValue() {
+            const ratingValueEl = document.getElementById( 'rating-value' );
+            ratingValueEl.innerText = ratingEl.value;
+        };
+
+        ratingEl.addEventListener( 'input', setValue);
+
+        // called on load so teh initial value of the rating is displayed
+        setValue();
+    </script>
+</body>
+</html>
